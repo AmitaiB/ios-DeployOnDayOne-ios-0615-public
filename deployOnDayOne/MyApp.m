@@ -19,9 +19,24 @@
 -(void)execute
 {
     // Begin writing your code here. This method will kick off automatically.
+    NSMutableArray *userList = [[NSMutableArray alloc] init];
+    NSMutableDictionary *currentUsername = [self logon:userList];
 
 
+    
+    
 }
+
+- (NSMutableDictionary *)logon:(NSMutableArray *)userList
+{
+    NSLog(@"Welcome to our New Student Learning about the Group (NSLag) interview app! Please enter your existing/new username to begin.");
+    NSMutableDictionary *userInput = [self requestKeyboardInput];
+    if (![userList doesContain:userInput]) {
+        [userList addObject:userInput];
+    }
+    return userInput;
+};
+
 
 
 // This method will read a line of text from the console and return it as an NSString instance.

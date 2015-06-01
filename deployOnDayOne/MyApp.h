@@ -15,4 +15,8 @@
 
 -(void)execute;
 
+-(NSMutableDictionary *)logon:(NSMutableArray *)userList;
+
+
+
 @end
