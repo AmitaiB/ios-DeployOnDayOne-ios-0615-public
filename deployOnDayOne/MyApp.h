@@ -18,7 +18,7 @@
 -(NSMutableDictionary *)logon:(NSMutableArray *)userList;
 
 -(NSString *)mainMenuOptions;
--(void)interviewUser:(Person *)currentUser;
+-(void)interviewUser:(Person *)currentUser withQuestionBank:(NSMutableArray *)questionBank;
 -(void)addInterviewQuestion:(Person *)currentUser;
 -(void)readPublicInterviews;
 
