@@ -10,10 +10,4 @@
 
 @implementation Person
 
-
-
-//@synthesize userName;
-
-
-
 @end

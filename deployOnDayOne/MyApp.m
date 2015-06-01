@@ -22,6 +22,7 @@
     
     //An NSMA (of Person objects) to keep track of the membership/users
     NSMutableArray *userList = [[NSMutableArray alloc] init];
+    NSMutableArray *interviewQuestionsBank = [[NSMutableArray alloc] init];
     
     Person *currentUser = [[Person alloc] init];
     currentUser.userName = [self logon:userList]; //logon checks against list of users, and adds it if it's new.
@@ -38,6 +39,7 @@
         case 3:
             readPublicInterviews();
             break;
+     /*
         case 4:
             goBackToLogon();
             break;
@@ -47,10 +49,10 @@
         default:
             errorMessageThenDoThisMenuAgain();
             break;
+      */
     }
 
-    
-    
+        
 }
 
 - (NSString *)logon:(NSMutableArray *)userList
@@ -72,9 +74,24 @@
     return [self requestKeyboardInput];
 }
 
+-(void)interviewUser:(Person *)currentUser
+{
+    //takes the current user, and the offers a number of questions to answer, or to choose a random one. records the answer in the person's answer NSdictionary.
+}
+
+-(void)addInterviewQuestion:(Person *)currentUser
+{
+    //allows the user to input a quetion to the NSArray question bank.
+}
+
+-(void)readPublicInterviews
+{
+    //allows the user to read the contents of userList answers.
+}
 
 // This method will read a line of text from the console and return it as an NSString instance.
 // You shouldn't have any need to modify (or really understand) this method.
+
 -(NSString *)requestKeyboardInput
 {
     char stringBuffer[4096] = { 0 };  // Technically there should be some safety on this to avoid a crash if you write too much.

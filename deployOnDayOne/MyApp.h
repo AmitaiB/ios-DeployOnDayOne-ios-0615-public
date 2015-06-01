@@ -19,6 +19,6 @@
 
 -(NSString *)mainMenuOptions;
 
-
+-(void)interviewUser:(Person *)currentUser;
 
 @end
