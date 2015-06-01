@@ -27,6 +27,27 @@
     currentUser.userName = [self logon:userList]; //logon checks against list of users, and adds it if it's new.
 
     NSString *mainMenuChoice = [self mainMenuOptions];
+    
+    switch ([mainMenuChoice intValue]) {
+        case 1:
+            interviewUser();
+            break;
+        case 2:
+            addInterviewQuestion();
+            break;
+        case 3:
+            readPublicInterviews();
+            break;
+        case 4:
+            goBackToLogon();
+            break;
+        case 5:
+            quit();
+            break;
+        default:
+            errorMessageThenDoThisMenuAgain();
+            break;
+    }
 
     
     
