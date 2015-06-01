@@ -22,7 +22,12 @@
     
     //An NSMA (of Person objects) to keep track of the membership/users
     NSMutableArray *userList = [[NSMutableArray alloc] init];
-    NSMutableArray *interviewQuestionsBank = [[NSMutableArray alloc] init];
+    
+    { //initialize a pre-populated question bank 
+    NSArray *standardQuestionsHelperArray = @[@1, @2, @3, @4];
+    NSArray *standardQuestions = [NSArray arrayWithObjects: @"WHAT is thy name?", @"WHAT is thy quest?", @"WHAT is thy favourate colour?", @"WHAT is air-speed of an unladen swallow?", nil];
+    NSMutableDictionary *interviewQuestionsBank = [NSMutableDictionary dictionaryWithObjects:standardQuestions forKeys:standardQuestionsHelperArray];
+    }
     
     Person *currentUser = [[Person alloc] init];
     currentUser.userName = [self logon:userList]; //logon checks against list of users, and adds it if it's new.
@@ -76,8 +81,15 @@
 
 -(void)interviewUser:(Person *)currentUser
 {
-    //takes the current user, and the offers a number of questions to answer, or to choose a random one. records the answer in the person's answer NSdictionary.
+    //takes the current user, and offers a number of questions to answer, or to choose a random one.
+    //records the answer in the person's answer NSdictionary.
+    NSLog(@"Please enter the number that corresponds to the question you would like to answer, or \"R\" to answer a question at random.");
+    displayQuestions(); //IMPLEMENT
+    userInputfromkeyboard(); //IMPLEMENT
+    
 }
+
+  -(void)displayQuestions
 
 -(void)addInterviewQuestion:(Person *)currentUser
 {
