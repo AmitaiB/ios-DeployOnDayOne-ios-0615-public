@@ -7,7 +7,7 @@
 //
 
 #import "MyApp.h"
-
+#import "Person.h"
 
 @interface MyApp()
 
@@ -18,25 +18,38 @@
 
 -(void)execute
 {
-    // Begin writing your code here. This method will kick off automatically.
+    // *********Begin writing your code here. This method will kick off automatically.************
+    
+    //An NSMA (of Person objects) to keep track of the membership/users
     NSMutableArray *userList = [[NSMutableArray alloc] init];
-    NSMutableDictionary *currentUsername = [self logon:userList];
+    
+    Person *currentUser = [[Person alloc] init];
+    currentUser.userName = [self logon:userList]; //logon checks against list of users, and adds it if it's new.
 
+    NSString *mainMenuChoice = [self mainMenuOptions];
 
     
     
 }
 
-- (NSMutableDictionary *)logon:(NSMutableArray *)userList
+- (NSString *)logon:(NSMutableArray *)userList
 {
     NSLog(@"Welcome to our New Student Learning about the Group (NSLag) interview app! Please enter your existing/new username to begin.");
-    NSMutableDictionary *userInput = [self requestKeyboardInput];
+    NSString *userInput = [self requestKeyboardInput];
     if (![userList doesContain:userInput]) {
         [userList addObject:userInput];
+        NSLog(@"Welcome back, %@!", userInput);
+    } else {
+        NSLog(@"Welcome, new user!");
     }
     return userInput;
 };
 
+- (NSString *)mainMenuOptions
+{
+    NSLog(@"Please choose from the following three options:\n1. Be interviewed.\n2. Write a new interview question.\n3. Read an interview with another student.\n4. Logout\n5. Quit\n\nSimply type in the option number you are interested in, and press enter.");
+    return [self requestKeyboardInput];
+}
 
 
 // This method will read a line of text from the console and return it as an NSString instance.

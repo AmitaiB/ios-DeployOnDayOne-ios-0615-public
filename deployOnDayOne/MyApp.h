@@ -17,6 +17,8 @@
 
 -(NSMutableDictionary *)logon:(NSMutableArray *)userList;
 
+-(NSString *)mainMenuOptions;
+
 
 
 @end

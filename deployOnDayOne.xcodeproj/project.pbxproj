@@ -67,9 +67,9 @@
 			children = (
 				319B90FC1A79442C00755637 /* main.m */,
 				319B91031A7945BC00755637 /* MyApp.h */,
+				319B91041A7945BC00755637 /* MyApp.m */,
 				38C94CC61B1CD09800B4841B /* Person.h */,
 				38C94CC71B1CD09800B4841B /* Person.m */,
-				319B91041A7945BC00755637 /* MyApp.m */,
 			);
 			path = deployOnDayOne;
 			sourceTree = "<group>";
