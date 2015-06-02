@@ -91,10 +91,20 @@
     }];
      
     NSString *userChoice = [self requestKeyboardInput];
-    
-    
     //NOW NEED TO RESPOND TO USER'S CHOICE IN ORDER TO COMPLETE THIS FUNCTION'S FUNCTIONALITY
     
+    NSMutableString *mutableUserChoice = [[NSMutableString alloc] initWithString:userChoice]; //a mutable copy of userChoice
+    
+    while (![[questionBank allKeys] doesContain:mutableUserChoice] || [[currentUser.userResponses allKeys] doesContain:mutableUserChoice]) {
+        if (![[questionBank allKeys] doesContain:mutableUserChoice])
+            NSLog(@"That's not a possible choice today! Choose another, please.");
+        if ([[currentUser.userResponses allKeys] doesContain:mutableUserChoice]) {
+            NSLog(@"You've already answered that question! Choose another, please.");
+        }
+        NSString *userChoice = [self requestKeyboardInput];
+        NSMutableString *temp = [[NSMutableString alloc] initWithString:userChoice]; //a mutable copy of userChoice
+        mutableUserChoice = temp;
+    }
     
 }
 
