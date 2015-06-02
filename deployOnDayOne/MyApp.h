@@ -20,7 +20,8 @@
 
 -(NSString *)mainMenuOptions;
 -(void)interviewUser:(Person *)currentUser withQuestionBank:(NSMutableArray *)questionBank;
--(void)addInterviewQuestion:(Person *)currentUser;
+-(void)addInterviewQuestion:(Person *)currentUser withQuestionBank:(NSMutableArray *)questionBank;
 -(void)readPublicInterviews;
+-(NSString *)numberToString:(NSUInteger)myInt;
 
 @end

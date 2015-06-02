@@ -116,16 +116,17 @@
     }
     
     NSLog(@"%@, you chose to answer this question:\n%@", currentUser.userName, questionBank[mutableUserChoice]);
-    
-    //Enters user's response as an object in the questionBank, keyed to the object count (e.g., if there were 4 objects, the new one is keyed to "5", etc. etc.)
-    NSString *newKeyAsString = [NSString stringWithFormat:@"%lul", (unsigned long)[questionBank count]];
-    [questionBank setObject:[self requestKeyboardInput] forKey:newKeyAsString];
+    [currentUser.userResponses setObject:[self requestKeyboardInput] forKey:[NSString stringWithFormat:@"%lul", (unsigned long)[questionBank count]]];
     
 }
 
--(void)addInterviewQuestion:(Person *)currentUser
+-(void)addInterviewQuestion:(Person *)currentUser withQuestionBank:questionBank
 {
-    //allows the user to input a quetion to the NSArray question bank.
+     //allows the user to input a quetion to the NSArray question bank.
+    NSLog(@"Please enter your query in the form of a question:");
+     //Enters user's response as an object in the questionBank, keyed to the object count (e.g., if there were 4 objects, the new one is keyed to "5", etc. etc.)
+    [questionBank setObject:[self requestKeyboardInput] forKey:[NSString stringWithFormat:@"%lul", (unsigned long)[questionBank count]]];
+
 }
 
 -(void)readPublicInterviews
@@ -135,6 +136,11 @@
 
 // This method will read a line of text from the console and return it as an NSString instance.
 // You shouldn't have any need to modify (or really understand) this method.
+
+-(NSString *)numberToString:(NSUInteger)myInt
+{
+    return [NSString stringWithFormat:@"%lul", (unsigned long)myInt];
+}
 
 -(NSString *)requestKeyboardInput
 {
