@@ -23,11 +23,12 @@
     //An NSMA (of Person objects) to keep track of the membership/users
     NSMutableArray *userList = [[NSMutableArray alloc] init];
     
-    { //initialize a pre-populated question bank
+    //initialize a pre-populated question bank
+    
     NSArray *standardQuestionsHelperArray = @[@1, @2, @3, @4];
     NSArray *standardQuestions = [NSArray arrayWithObjects: @"WHAT is thy name?", @"WHAT is thy quest?", @"WHAT is thy favourate colour?", @"WHAT is air-speed of an unladen swallow?", nil];
     NSMutableDictionary *interviewQuestionsBank = [NSMutableDictionary dictionaryWithObjects:standardQuestions forKeys:standardQuestionsHelperArray];
-    }
+    
     
     Person *currentUser = [[Person alloc] init];
     currentUser.userName = [self logon:userList]; //logon checks against list of users, and adds it if it's new.
@@ -87,14 +88,22 @@
     
     //iterate through the question bank to get "1) question one?, 2) question two?..."
     [questionBank enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [NSLog(@"%@ %@/n", key, obj)];
+        NSLog(@"%@ %@/n", key, obj);
     }];
+    //FFR: Sorting an NSDictionary: http://stackoverflow.com/questions/4558639/sort-an-nsmutabledictionary
      
     NSString *userChoice = [self requestKeyboardInput];
-    //NOW NEED TO RESPOND TO USER'S CHOICE IN ORDER TO COMPLETE THIS FUNCTION'S FUNCTIONALITY
-    
     NSMutableString *mutableUserChoice = [[NSMutableString alloc] initWithString:userChoice]; //a mutable copy of userChoice
     
+    /*
+     if (userChoice == @"R") {
+        NSNumber *temp = [NSNumber alloc] initWithUnsignedLong:[([[currentUser.userResponses allKeys] count] * random()) round];
+                mutableUserChoice
+    }
+     */
+    
+    
+    //conditions allow for pressing NaN or a 'wrong' number.
     while (![[questionBank allKeys] doesContain:mutableUserChoice] || [[currentUser.userResponses allKeys] doesContain:mutableUserChoice]) {
         if (![[questionBank allKeys] doesContain:mutableUserChoice])
             NSLog(@"That's not a possible choice today! Choose another, please.");
@@ -103,8 +112,14 @@
         }
         NSString *userChoice = [self requestKeyboardInput];
         NSMutableString *temp = [[NSMutableString alloc] initWithString:userChoice]; //a mutable copy of userChoice
-        mutableUserChoice = temp;
+        mutableUserChoice = temp; //this should escape the scope of the while loop...
     }
+    
+    NSLog(@"%@, you chose to answer this question:\n%@", currentUser.userName, questionBank[mutableUserChoice]);
+    
+    //Enters user's response as an object in the questionBank, keyed to the object count (e.g., if there were 4 objects, the new one is keyed to "5", etc. etc.)
+    NSString *newKeyAsString = [NSString stringWithFormat:@"%lul", (unsigned long)[questionBank count]];
+    [questionBank setObject:[self requestKeyboardInput] forKey:newKeyAsString];
     
 }
 

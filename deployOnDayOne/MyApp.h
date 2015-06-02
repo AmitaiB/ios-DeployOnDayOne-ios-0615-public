@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Person.h"
 
 @interface MyApp : NSObject
 
 @property (strong, nonatomic) NSString *currentUser;
+
 
 -(void)execute;
 
