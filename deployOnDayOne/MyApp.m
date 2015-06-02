@@ -37,7 +37,7 @@
     
     switch ([mainMenuChoice intValue]) {
         case 1:
-            interviewUser();
+            [self interviewUser:currentUser withQuestionBank:interviewQuestionsBank];
             break;
         case 2:
             addInterviewQuestion();
