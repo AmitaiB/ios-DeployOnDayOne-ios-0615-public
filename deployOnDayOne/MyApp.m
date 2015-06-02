@@ -137,11 +137,6 @@
 // This method will read a line of text from the console and return it as an NSString instance.
 // You shouldn't have any need to modify (or really understand) this method.
 
--(NSString *)numberToString:(NSUInteger)myInt
-{
-    return [NSString stringWithFormat:@"%lul", (unsigned long)myInt];
-}
-
 -(NSString *)requestKeyboardInput
 {
     char stringBuffer[4096] = { 0 };  // Technically there should be some safety on this to avoid a crash if you write too much.
