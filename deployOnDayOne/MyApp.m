@@ -136,9 +136,9 @@
 //
 -(void)readPublicInterviews:(NSMutableArray *)userList
 {
-    NSLog(@"Whose interviews would you like to read?");
+    NSLog(@"Whose interview would you like to read?");
     for (NSInteger i; i < [userList count]; i++) {
-        NSLog(@"%ul) %@", i, ((Person *)userList[i]).userName);
+        NSLog(@"%ldl) %@", (long)i, ((Person *)userList[i]).userName);
     }
     
 //    for (Person *users in userList) {
@@ -146,6 +146,17 @@
 //    }
     NSLog(@"Please type the desired username.");
     NSString *userChoice = [self requestKeyboardInput];
+    
+    NSMutableString *interviewToDisplay = [NSMutableString stringWithCapacity:0];
+    NSArray *keysToQuestionsSelectedUserAnswered = userList //STOPPED HERE
+    
+    [interviewToDisplay appendString:"\nQuestion %@: %@\n\n%@'s Response:\n%@", ];
+//    question #
+//    question text
+//    username
+//    username's response
+    
+    NSLog(@"%@", interviewToDisplay);
     
 }
 
