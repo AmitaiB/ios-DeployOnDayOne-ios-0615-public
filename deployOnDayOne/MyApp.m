@@ -120,18 +120,33 @@
     
 }
 
+
+//    allows the user to input a quetion to the NSArray question bank.
+//
 -(void)addInterviewQuestion:(Person *)currentUser withQuestionBank:questionBank
 {
-     //allows the user to input a quetion to the NSArray question bank.
+
     NSLog(@"Please enter your query in the form of a question:");
-     //Enters user's response as an object in the questionBank, keyed to the object count (e.g., if there were 4 objects, the new one is keyed to "5", etc. etc.)
+     //Enters user's response as an object in the questionBank, keyed to the container's count (e.g., if there were 4 objects, the new one is keyed to "5", etc. etc.)
     [questionBank setObject:[self requestKeyboardInput] forKey:[NSString stringWithFormat:@"%lul", (unsigned long)[questionBank count]]];
 
 }
 
--(void)readPublicInterviews
+//    allows the user to read the contents of userList answers.
+//
+-(void)readPublicInterviews:(NSMutableArray *)userList
 {
-    //allows the user to read the contents of userList answers.
+    NSLog(@"Whose interviews would you like to read?");
+    for (NSInteger i; i < [userList count]; i++) {
+        NSLog(@"%ul) %@", i, ((Person *)userList[i]).userName);
+    }
+    
+//    for (Person *users in userList) {
+//        NSLog(@"%@", users.userName);
+//    }
+    NSLog(@"Please type the desired username.");
+    NSString *userChoice = [self requestKeyboardInput];
+    
 }
 
 // This method will read a line of text from the console and return it as an NSString instance.
