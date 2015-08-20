@@ -61,17 +61,17 @@
         
 }
 
-- (NSString *)logon:(NSMutableArray *)userList
+- (void)logon:(NSMutableArray *)userList
 {
     NSLog(@"Welcome to our New Student Learning about the Group (NSLag) interview app! Please enter your existing/new username to begin.");
     NSString *userInput = [self requestKeyboardInput];
     if (![userList doesContain:userInput]) {
         [userList addObject:userInput];
-        NSLog(@"Welcome back, %@!", userInput);
-    } else {
         NSLog(@"Welcome, new user!");
+    } else {
+        NSLog(@"Welcome back, %@!", userInput);
     }
-    return userInput;
+    self.currentUser = userInput;
 };
 
 - (NSString *)mainMenuOptions

@@ -14,4 +14,6 @@
 @property(strong) NSMutableDictionary *userResponses; //a record of submitted responses.
 //@property(strong) NSArray *questionsThisUserAuthored; //to keep track of who authored what...
 
+-(instancetype)initWithName:(NSString*)userName;
+
 @end
