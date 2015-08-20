@@ -12,11 +12,12 @@
 @interface MyApp : NSObject
 
 @property (strong, nonatomic) NSString *currentUser;
+@property (strong, nonatomic) NSDictionary *userInfo; //Dictionary of Dictionaries
 
 
 -(void)execute;
 
--(NSMutableDictionary *)logon:(NSMutableArray *)userList;
+-(void)login:(NSMutableArray *)userList;
 
 -(NSString *)mainMenuOptions;
 -(void)interviewUser:(Person *)currentUser withQuestionBank:(NSMutableArray *)questionBank;

@@ -10,10 +10,13 @@
 
 @interface Person : NSObject
 
-@property(strong) NSString *userName; //what it says
+@property (strong, nonatomic) NSString *userName; //what it says
+@property (strong, nonatomic) NSMutableDictionary *userInfo;
+
 @property(strong) NSMutableDictionary *userResponses; //a record of submitted responses.
 //@property(strong) NSArray *questionsThisUserAuthored; //to keep track of who authored what...
 
+-(instancetype)valueWithName:(NSString *)userName userInfo:(NSMutableDictionary*)userInfo;
 -(instancetype)initWithName:(NSString*)userName;
 
 @end

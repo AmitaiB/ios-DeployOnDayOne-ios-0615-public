@@ -8,6 +8,8 @@
 
 #import "MyApp.h"
 #import "Person.h"
+#define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+
 
 @interface MyApp()
 
@@ -20,19 +22,19 @@
 {
     // *********Begin writing your code here. This method will kick off automatically.************
     
-    //An NSMA (of Person objects) to keep track of the membership/users
-    NSMutableArray *userList = [[NSMutableArray alloc] init];
+    NSMutableArray *userList = [NSMutableArray new];
     
     //initialize a pre-populated question bank
+    NSMutableDictionary *interviewQuestionsBank = @{@"nameQuestion"     : @"WHAT is thy name?",
+                                                    @"questQuestion"    : @"WHAT is thy quest?",
+                                                    @"favColorQuestion" : @"WHAT is thy favourate colour?",
+                                                    @"surpriseQuestion" : @"WHAT is air-speed of an unladen swallow?"};
     
-    NSArray *standardQuestionsHelperArray = @[@1, @2, @3, @4];
-    NSArray *standardQuestions = [NSArray arrayWithObjects: @"WHAT is thy name?", @"WHAT is thy quest?", @"WHAT is thy favourate colour?", @"WHAT is air-speed of an unladen swallow?", nil];
-    NSMutableDictionary *interviewQuestionsBank = [NSMutableDictionary dictionaryWithObjects:standardQuestions forKeys:standardQuestionsHelperArray];
+    [self login:userList];
+    
+    Person *currentUser = [[Person alloc] initWithName:self.currentUser];
     
     
-    Person *currentUser = [[Person alloc] init];
-    currentUser.userName = [self logon:userList]; //logon checks against list of users, and adds it if it's new.
-
     NSString *mainMenuChoice = [self mainMenuOptions];
     
     switch ([mainMenuChoice intValue]) {
@@ -61,7 +63,7 @@
         
 }
 
-- (void)logon:(NSMutableArray *)userList
+- (void)login:(NSMutableArray *)userList
 {
     NSLog(@"Welcome to our New Student Learning about the Group (NSLag) interview app! Please enter your existing/new username to begin.");
     NSString *userInput = [self requestKeyboardInput];
@@ -74,10 +76,38 @@
     self.currentUser = userInput;
 };
 
-- (NSString *)mainMenuOptions
+- (void)logout {
+    self.currentUser = @"";
+    DBLG
+}
+
+- (void)mainMenuOptions
 {
     NSLog(@"Please choose from the following three options:\n1. Be interviewed.\n2. Write a new interview question.\n3. Read an interview with another student.\n4. Logout\n5. Quit\n\nSimply type in the option number you are interested in, and press enter.");
-    return [self requestKeyboardInput];
+    NSString * userInput = [self requestKeyboardInput];
+    if ([@([userInput integerValue]) isKindOfClass:[NSNumber class]]) {
+        switch ([userInput integerValue]) {
+            case 1: //TODO:
+                    //be interview
+                break;
+            case 2:
+                    //add new interview question
+                break;
+            case 3:
+                    //Read another's interview info
+                break;
+            case 4:
+                [self logout];    //logout
+                break;
+            case 5:
+                    //quit
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
 }
 
 -(void)interviewUser:(Person *)currentUser withQuestionBank:(NSMutableDictionary *)questionBank

@@ -10,11 +10,12 @@
 
 @implementation Person
 
--(instancetype)initWithName:(NSString *)userName {
+-(instancetype)initWithName:(NSString *)userName userInfo:(NSDictionary *)userInfo{
 {
         self = [super init];
         if (self) {
             _userName = userName;
+            _userInfo = userInfo;
         }
         return self;
     }
