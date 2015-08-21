@@ -25,10 +25,13 @@
     NSMutableArray *userList = [NSMutableArray new];
     
     //initialize a pre-populated question bank
-    NSMutableDictionary *interviewQuestionsBank = @{@"nameQuestion"     : @"WHAT is thy name?",
-                                                    @"questQuestion"    : @"WHAT is thy quest?",
-                                                    @"favColorQuestion" : @"WHAT is thy favourate colour?",
-                                                    @"surpriseQuestion" : @"WHAT is air-speed of an unladen swallow?"};
+    
+    NSMutableDictionary *interviewQuestionsBank = [[NSMutableDictionary alloc] initWithDictionary:
+                                                    @{@"nameQuestion"     : @"WHAT is thy name?",
+                                                      @"questQuestion"    : @"WHAT is thy quest?",
+                                                      @"favColorQuestion" : @"WHAT is thy favourate colour?",
+                                                      @"surpriseQuestion" : @"WHAT is air-speed of an unladen swallow?"}
+                                                                                        copyItems:YES];
     
     [self login:userList];
     
@@ -88,7 +91,7 @@
     if ([@([userInput integerValue]) isKindOfClass:[NSNumber class]]) {
         switch ([userInput integerValue]) {
             case 1: //TODO:
-                    //be interview
+                    //be interviewed
                 break;
             case 2:
                     //add new interview question

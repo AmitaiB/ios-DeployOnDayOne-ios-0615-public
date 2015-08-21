@@ -22,6 +22,6 @@
 -(NSString *)mainMenuOptions;
 -(void)interviewUser:(Person *)currentUser withQuestionBank:(NSMutableArray *)questionBank;
 -(void)addInterviewQuestion:(Person *)currentUser withQuestionBank:(NSMutableArray *)questionBank;
--(void)readPublicInterviews;
+-(void)readPublicInterviews:(NSMutableDictionary*)userList;
 
 @end
